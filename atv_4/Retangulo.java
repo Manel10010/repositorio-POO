@@ -4,6 +4,11 @@ public class Retangulo extends Formato{
     private double largura;
     private double altura;
 
+    public Retangulo(Cores cor, double largura, double altura) {
+        super(cor);
+        this.largura = largura;
+        this.altura = altura;
+    }
     @Override
     public double area() {
         return largura*altura;

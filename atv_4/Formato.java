@@ -1,13 +1,17 @@
 package atv_4;
 
 public abstract class Formato {
-    private String cor;
+    private Cores cor;
     public abstract double area();
     
-    public String getCor() {
+    public Formato(Cores cor) {
+        this.cor = cor;
+    }
+
+    public Cores getCor() {
         return cor;
     }
-    public void setCor(String cor) {
+    public void setCor(Cores cor) {
         this.cor = cor;
     }
 }

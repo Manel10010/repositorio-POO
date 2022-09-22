@@ -4,6 +4,11 @@ import java.lang.Math;
 public class Circulo extends Formato{
     private double raio;
 
+    public Circulo(Cores cor, double raio) {
+        super(cor);
+        this.raio = raio;
+    }
+    
     @Override
     public double area() {
         return 3.14 * Math.pow(raio, 2);
