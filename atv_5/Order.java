@@ -1,28 +1,43 @@
 package atv_5;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
-public class Order extends OrdemItem{
-    
-    private Date momento;
+import java.util.ArrayList;
+
+public class Order {
+    private java.util.Date moment;
     private OrderStatus status;
+    private Client client;
+    private ArrayList<OrderItem> items;
 
-    public Order(OrderStatus status) {
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-            Date data = new Date();
-            this.momento = data;
-            this.status = status;
-    }
-    public addItem(OrderItem item){
-        OrderItem ni = new OrderItem();
-        return ni;
+    public Order(java.util.Date currentDate, OrderStatus status, Client client) {
+        this.moment = currentDate;
+        this.status = status;
+        this.client = client;
+        this.items = new ArrayList<>();
     }
 
-    public removeItem(OrderItem item) {
+    public void addItem(OrderItem orderItem) {
+        items.add(orderItem);
+    }
 
+    public void removeItem(OrderItem orderItem) {
+        items.remove(orderItem);
     }
 
     public double total() {
-        
+        // return items.stream().mapToDouble(item -> item.subTotal()).sum();
+        double sum = 0;
+        for(OrderItem item : items) {
+            sum += item.subTotal();
+        }
+        return sum;
+    }
+
+    @Override
+    public String toString() {
+        String items_as_str = "";
+        for(OrderItem item : items) {
+            items_as_str += String.format("%s, $%s, Quantity: %s, Subtotal: $%s\n", item.product.getName(), item.product.getPrice(), item.getQuantity(), item.subTotal());
+        }
+        return String.format("Order moment: %s\nOrder status: %s\nClient: %s\nOrder items:\n%s\nTotal price: $%s\n", moment, status, client, items_as_str, total());
     }
 }

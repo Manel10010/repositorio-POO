@@ -1,11 +1,19 @@
 package atv_5;
 
 public class Product {
-    private String nome;
-    private double price;
+    private String name; 
+    private double price; 
+    
+    public Product(String productName, double productPrice) {
+        this.name = productName;
+        this.price = productPrice;
+    }
 
-    public Product(String nome, double price) {
-        this.nome = nome;
-        this.price = price;
+    public String getName() {
+        return name;
+    }
+
+    public double getPrice() {
+        return price;
     }
 }

@@ -1,15 +1,18 @@
 package atv_5;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class Client {
     private String name;
     private String email;
-    private Date birthDate;
+    private java.util.Date birthDate;
 
-    public Client(String name, String email, Date birthDate) {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        Date data = new Date();
-        this.birthDate = data;
+    public Client(String name, String email, java.util.Date birthDate) {
+        this.name = name; 
+        this.email= email; 
+        this.birthDate = birthDate; 
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s (%s) - %s\n", name, birthDate, email);
     }
 }

@@ -1,23 +1,27 @@
 package atv_7;
-import java.util.Arrays;
 
-public class YoutubeVideo extends Video{
-    private int[] bits;
-    public YoutubeVideo(int[] bits) {
-        this.bits = bits;
+public class YoutubeVideo extends Video {
+
+    private final int[] bits;
+
+    public YoutubeVideo() {
+       bits = new int[] {
+              80, 97, 114, 97, 98, 233, 110, 115, 44,
+              32, 118, 99, 32, 99, 111, 110, 115, 101,
+              103, 117, 105, 117, 46
+        };
     }
+
     public int[] getBits() {
-        return bits;
+       return bits;
     }
 
     @Override
-    public String[] getContent() {
-        String frase = "";
-        for (int i = 0; i < bits.length; i++) {
-            int a = bits[i];
-            String str = Character.toString(a);
-            frase += str;
+    public String getContent() {
+        String content = "";
+        for(int i = 0; i < bits.length; i++) {
+            content += (char)bits[i];
         }
-        return ;
+        return content;
     }
 }

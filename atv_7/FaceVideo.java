@@ -1,10 +1,24 @@
 package atv_7;
 
-public class FaceVideo extends Video{
-    private boolean[] bitsFace;
+public class FaceVideo extends Video {
 
-    public FaceVideo(boolean[] bitsFace) {
-        this.bitsFace = bitsFace;
+    private final boolean[] bitsFace;
+
+    public FaceVideo() {
+       bitsFace = new boolean[] {
+              false, true, false, true, false, false, false, false, false, true, true, false, false, false, false,
+              true, false, true, true, true, false, false, true, false, false, true, true, false, false, false, false,
+              true, false, true, true, false, false, false, true, false, true, true, true, false, true, false, false,
+              true, false, true, true, false, true, true, true, false, false, true, true, true, false, false, true,
+              true, false, false, true, false, true, true, false, false, false, false, true, false, false, false,
+              false, false, false, true, true, true, false, true, true, false, false, true, true, false, false, false,
+              true, true, false, false, true, false, false, false, false, false, false, true, true, false, false,
+              false, true, true, false, true, true, false, true, true, true, true, false, true, true, false, true,
+              true, true, false, false, true, true, true, false, false, true, true, false, true, true, false, false,
+              true, false, true, false, true, true, false, false, true, true, true, false, true, true, true, false,
+              true, false, true, false, true, true, false, true, false, false, true, false, true, true, true, false,
+              true, false, true, false, false, true, false, true, true, true, false
+       };
     }
 
     public boolean[] getBitsFace() {
@@ -12,13 +26,19 @@ public class FaceVideo extends Video{
     }
 
     @Override
-    public String[] getContent() {
-        String frase[] = new String[];
-        for (int i = 0; i < bitsFace.length; i+= 8) {
-
-            String letra = '';
+    public String getContent() {
+        String content = "";
+        String currentBinaryString = "";
+        
+        for(int i = 0; i < bitsFace.length; i++) {
+            char currentBit = bitsFace[i] ? '1' : '0';
+            currentBinaryString += currentBit;
+            if(i % 8 == 0) {
+                int asciiCode = Integer.parseInt(currentBinaryString, 2) / 2;
+                content += (char)asciiCode;
+                currentBinaryString = "";
+            }
         }
-        String frase[] = new String[] {};
-        return frase;
+        return content;
     }
 }

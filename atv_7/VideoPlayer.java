@@ -6,8 +6,13 @@ public class VideoPlayer {
     public VideoPlayer(Video video) {
         this.video = video;
     }
-    
+
+    public void setVideo(Video video) {
+        this.video = video;
+    }
+
     public void play() {
-        System.out.println(video.getContent());
+        String content = video.getContent();
+        System.out.println(content);
     }
 }
